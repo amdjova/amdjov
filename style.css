@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.1); /* Lebih transparan */
+  border-radius: 16px;
+  margin-top: 60px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.profile h1 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.links .btn {
+  display: inline-block;
+  min-width: 200px;
+  margin: 4px 0;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  font-size: 16px;
+}
+
+.links .btn i {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.links .btn.instagram:hover {
+  background-color: #e1306c; /* pink Instagram */
+  color: white;
+  transform: scale(1.05);
+}
+
+.links .btn.whatsapp:hover {
+  background-color: #25D366; /* hijau WhatsApp */
+  color: white;
+  transform: scale(1.05);
+}
+
+.links .btn.email:hover {
+  background-color: #ff914d; /* oranye Email */
+  color: white;
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 20px;
+  }
+
+  .profile h1 {
+    font-size: 20px;
+  }
+
+  .links .btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+.profile .title {
+  font-size: 14px;
+  color: #ffffffb3; /* putih transparan */
+  margin-top: -25px;
+  margin-bottom: 20px;
+}
+
+/* Popup Background */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gambar Popup */
+.popup-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  animation: zoomIn 0.3s ease;
+}
+
+/* Tombol Close */
+.close {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Animasi Zoom */
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.7); opacity: 0; }
+}
+
+.popup-img.anti-screenshot {
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  mix-blend-mode: exclusion; /* Gabungan warna aneh saat ditangkap */
+  filter: blur(0.5px) brightness(1);
+  opacity: 0.999; /* Menipu render pipeline GPU */
+  backface-visibility: hidden;
+}
